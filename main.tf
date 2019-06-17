@@ -68,7 +68,7 @@ resource "aws_instance" "private_module_instance" {
   associate_public_ip_address = true
 
   // Creation of this instance depends on the security group already existing
-  vpc_security_group_ids      = ["${aws_security_group.windows_server_rdp.id}"] 
+  vpc_security_group_ids      = ["${aws_security_group.windows_server_rdp.id}"]
   subnet_id                   = data.aws_subnet.lab_default_subnet.id
 
   tags = {
@@ -81,7 +81,7 @@ resource "aws_instance" "private_module_instance" {
     inline = [
       "sudo apt-get -y update",
       "sudo apt-get -y install nginx",
-      "echo "${var.filecontent}" | sudo tee /var/www/html/index.html",
+      "echo '${var.filecontent}' | sudo tee /var/www/html/index.html",
       "sudo service nginx start"
     ]
 
