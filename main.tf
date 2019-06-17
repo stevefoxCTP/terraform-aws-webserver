@@ -81,7 +81,7 @@ resource "aws_instance" "private_module_instance" {
     inline = [
       "sudo apt-get -y update",
       "sudo apt-get -y install nginx",
-      "echo '${var.filecontent}' | sudo tee /var/www/index.html",
+      "echo "${var.filecontent}" | sudo tee /var/www/html/index.html",
       "sudo service nginx start"
     ]
 
